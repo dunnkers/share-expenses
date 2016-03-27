@@ -4,6 +4,17 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'share-expenses',
     environment: environment,
+    contentSecurityPolicy: {
+      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
+      'frame-src': "'self' https://*.firebaseio.com",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.firebaseio.com",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+      'font-src': "'self' https://fonts.gstatic.com"
+    },
+    firebase: 'https://glaring-fire-5247.firebaseio.com/',
+    torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

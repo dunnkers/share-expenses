@@ -7,14 +7,26 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="/assets/webcomponentsjs/webcomponents.min.js"></script>
+
+    <script>
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+    </script>
+
     {{content-for "head"}}
+
+    <link rel="import" href="assets/vulcanized.html">
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/share-expenses.css">
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+    </style>
 
     {{content-for "head-footer"}}
   </head>
-  <body>
+  <body class="fullbleed">
+
     {{content-for "body"}}
 
     <script src="assets/vendor.js"></script>

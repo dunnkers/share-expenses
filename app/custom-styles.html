@@ -1,0 +1,25 @@
+<style is="custom-style">
+  .container {
+    @apply(--layout-horizontal);
+    @apply(--layout-wrap);
+  }
+
+  .flex-horizontal {
+    @apply(--layout-horizontal);
+  }
+
+  .flexchild {
+    @apply(--layout-flex);
+  }
+
+  .link {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+  }
+
+  .self-end {
+    /* This mixin (from iron-flex-layout) aligns the tabs to the
+       bottom of the toolbar. */
+    @apply(--layout-self-end);
+  }
+</style>

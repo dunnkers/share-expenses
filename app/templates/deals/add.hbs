@@ -1,0 +1,16 @@
+<h4>Nieuwe deal aanmaken</h4>
+
+{{#p-input label="Beschrijving" value=description}}
+  <iron-icon prefix icon="assignment"></iron-icon>
+{{/p-input}}
+
+{{#p-input label="Aantal" value=amount type="number"}}
+  <div prefix>#</div>
+{{/p-input}}
+
+{{#p-input label="Kosten" value=cost type="number"}}
+  <iron-icon prefix icon="editor:attach-money"></iron-icon>
+{{/p-input}}
+
+<paper-icon-button icon="check" class="giant" {{action "save"}}>
+</paper-icon-button>

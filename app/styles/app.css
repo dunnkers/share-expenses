@@ -1,0 +1,63 @@
+@import "polymail.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Noto", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  background-color: #fafafa;
+  color: #444;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+.outlet {
+  padding: 30px;
+}
+
+.google-sign-in {
+  text-transform: none;
+  background-color: #fff;
+  color: #757575;
+  height: 36px;
+  width: 120px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: Roboto, arial, sans-serif;
+}
+
+.google-sign-in img {
+  width: 18px;
+  height: 18px;
+  float: left;
+  letter-spacing: .21px;
+}
+
+/* Main */
+.main-tabs {
+  width: 100%;
+}
+
+/* Deals */
+paper-icon-button.giant {
+  width: 75px;
+  height: 75px;
+}
+
+/* Tasks */
+.task-component {
+  height: 30px;
+}
+
+paper-icon-button.delete-task:hover {
+  color: black;
+}
+
+paper-toast paper-button {
+  color: #FFB74D;
+}
