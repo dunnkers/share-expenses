@@ -1,16 +1,25 @@
 <h4>Nieuwe deal aanmaken</h4>
 
-{{#p-input label="Beschrijving" value=description}}
+<div class="paper-form-input">
   <iron-icon prefix icon="assignment"></iron-icon>
-{{/p-input}}
+  {{p-input label="Beschrijving" value=description}}
+</div>
 
-{{#p-input label="Aantal" value=amount type="number"}}
-  <div prefix>#</div>
-{{/p-input}}
+<div class="paper-input layout horizontal">
+  <iron-icon class="self-center" prefix icon="assignment"></iron-icon>
+  {{p-input class="flex" label="Beschrijving" value=description}}
+</div>
 
-{{#p-input label="Kosten" value=cost type="number"}}
-  <iron-icon prefix icon="editor:attach-money"></iron-icon>
-{{/p-input}}
 
-<paper-icon-button icon="check" class="giant" {{action "save"}}>
-</paper-icon-button>
+{{p-form-input label="Beschrijving" value=description icon="assignment" required=true}}
+
+{{#p-form-input label="Aantal" value=amount type="number" required=true}}
+<h2>#</h2>
+{{/p-form-input}}
+
+{{p-form-input label="Kosten" value=cost icon="editor:attach-money" type="number" required=true}}
+
+<div class="container flex-end-justified">
+  <paper-icon-button icon="check" class="giant" {{action "save"}}>
+  </paper-icon-button>
+</div>

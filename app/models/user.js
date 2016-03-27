@@ -2,6 +2,9 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
+
   groups: DS.hasMany('group'),
-  deals: DS.hasMany('deal')
+  advances: DS.hasMany('deal'), /* advance payments this user made for others */
+  participating: DS.hasMany('deal'),
+  tasks: DS.hasMany('task')
 });

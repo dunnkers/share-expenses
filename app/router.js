@@ -6,9 +6,14 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('groups', function() {
+    this.route('add');
+  });
+
   this.route('deals', function() {
     this.route('add');
   });
+
   this.route('tasks');
 });
 

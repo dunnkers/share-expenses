@@ -1,4 +1,24 @@
 <style is="custom-style">
+  /*.paper-form-input {
+    @apply(--layout-horizontal);
+    @apply(--layout-wrap);
+  }
+
+  .paper-form-input *[prefix] {
+    margin: 20px 25px 0px 0px;
+    width: 24px;
+    height: 24px;
+    @apply(--layout-self-center);
+  }
+
+  .paper-form-input paper-input {
+    @apply(--layout-flex);
+  }
+
+
+*/
+
+
   .container {
     @apply(--layout-horizontal);
     @apply(--layout-wrap);
@@ -8,18 +28,51 @@
     @apply(--layout-horizontal);
   }
 
+  .flex-vertical {
+    @apply(--layout-vertical);
+  }
+
   .flexchild {
     @apply(--layout-flex);
   }
 
-  .link {
-    @apply(--layout-horizontal);
-    @apply(--layout-center-center);
+  .center {
+    @apply(--layout-center);
   }
 
-  .self-end {
-    /* This mixin (from iron-flex-layout) aligns the tabs to the
-       bottom of the toolbar. */
+  .flex-center-justified {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-justified);
+  }
+
+  .flex-end-justified {
+    @apply(--layout-horizontal);
+    @apply(--layout-end-justified);
+  }
+
+  .flex-equal-justified {
+    @apply(--layout-horizontal);
+    @apply(--layout-justified);
+  }
+
+  .flex-center-align {
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+  }
+
+  .layout-self-start {
+    @apply(--layout-self-start);
+  }
+
+  .layout-self-center {
+    @apply(--layout-self-center);
+  }
+
+  .layout-self-end {
     @apply(--layout-self-end);
+  }
+
+  .layout-self-stretch {
+    @apply(--layout-self-stretch);
   }
 </style>

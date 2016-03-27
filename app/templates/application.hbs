@@ -17,12 +17,21 @@
 
     <paper-menu selected="0" selectable="paper-icon-item" on-iron-activate="menuSelect">
       {{#if session.isAuthenticated}}
-      <paper-icon-item {{action "navigate" "deals"}} role="menuitem" class="layout horizontal">
+      <paper-icon-item {{action "navigate" "index"}} role="menuitem" class="layout horizontal">
+        <iron-icon icon="home" item-icon></iron-icon> Home
+      </paper-icon-item>
+      {{#each user.groups as |group|}}
+        {{group.name}}
+      {{/each}}
+      <paper-icon-item {{action "navigate" "groups.add"}} role="menuitem" class="layout horizontal">
+        <iron-icon icon="social:group-add" item-icon></iron-icon> Groep toevoegen...
+      </paper-icon-item>
+      {{!-- <paper-icon-item {{action "navigate" "deals"}} role="menuitem" class="layout horizontal">
         <iron-icon icon="maps:local-atm" item-icon></iron-icon> Deals
       </paper-icon-item>
       <paper-icon-item {{action "navigate" "tasks"}} role="menuitem" class="layout horizontal">
         <iron-icon icon="check-circle" item-icon></iron-icon> Taken
-      </paper-icon-item>
+      </paper-icon-item> --}}
       <div class="separator"></div>
       <paper-icon-item {{action "signOut"}} role="menuitem" class="layout horizontal">
         <iron-icon icon="power-settings-new" item-icon></iron-icon> Uitloggen
@@ -36,19 +45,43 @@
     <paper-toolbar class="medium-tall">
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
       <span class="indent title">Samen Betalen</span>
+      {{#if session.isAuthenticated}}
       <paper-tabs selected="0" class="bottom fit">
-        <paper-tab class="link">DEALS</paper-tab>
-        <paper-tab class="link">TAKEN</paper-tab>
+        {{#link-to "deals" tagName="paper-tab"}}DEALS{{/link-to}}
+        {{#link-to "tasks" tagName="paper-tab"}}TAKEN{{/link-to}}
       </paper-tabs>
+      {{/if}}
     </paper-toolbar>
     <div class="outlet">
       {{#if session.isAuthenticated}}
-        {{outlet}}
+        {{noUserRecord}}
+        {{#if noUserRecord}}
+          <h4>Er is iets mis gegaan met het registreren!
+            Log uit en probeer het nogmaals!</h4>
+        {{else}}
+          {{outlet}}
+        {{/if}}
       {{else}}
-        <paper-button class="google-sign-in" raised {{action "signIn" "google"}}>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-          Inloggen
-        </paper-button>
+        <div class="splash-page">
+          <div class="container center flex-vertical">
+            <p>
+              <h2>Welkom bij Samen Betalen!</h2>
+            </p>
+            <p>
+              <iron-icon icon="social:mood" style="width:100px;height:100px;"></iron-icon>
+            </p>
+            <p>
+              Log in met Google om verder te gaan.
+            </p>
+            <p>
+              <paper-button class="google-sign-in" raised {{action "signIn" "google"}}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+                Inloggen
+              </paper-button>
+            </p>
+          </div>
+        </div>
+
       {{/if}}
 
     </div>

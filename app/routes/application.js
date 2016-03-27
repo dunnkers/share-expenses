@@ -7,11 +7,29 @@ export default Ember.Route.extend({
     });
   },
 
+  model() {
+    let uid = this.get('session.uid');
+
+    if (!uid) { return null; }
+
+    return this.store.find('user', uid).then((user) => user, () => {
+      Ember.Logger.error('Failed to fetch user from database!');
+      return null;
+    });
+  },
+  user: Ember.computed.alias('model'),
+
   actions: {
     signIn: function (provider) {
       this.get("session").open("firebase", {
         provider: provider
-      }).then(function(data) {
+      }).then((data) => {
+        let user = this.store.createRecord('user', {
+          id: data.uid,
+          name: data.currentUser.displayName
+        });
+        user.save().then((res) => console.log('res!',res));
+        console.log(user);
         console.log(data);
         console.log(data.currentUser);
       });

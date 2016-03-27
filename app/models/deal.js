@@ -6,7 +6,10 @@ export default DS.Model.extend({
   cost: DS.attr('number'),
   // currency: DS.belongsTo('number')
 
-  owner: DS.belongsTo('user'),
-  participants: DS.hasMany('user'),
-  group: DS.belongsTo('group')
+  owner: DS.belongsTo('user', { inverse: 'advances' }),
+  participants: DS.hasMany('user', { inverse: 'participating' }),
+  group: DS.belongsTo('group'),
+  createdAt: DS.attr('date', {
+    defaultValue() { return new Date(); }
+  })
 });

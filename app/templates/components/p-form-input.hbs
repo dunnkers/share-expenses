@@ -1,0 +1,12 @@
+<div class="container flex paper-input">
+  <div class="layout-self-center">
+    {{#if icon}}
+      <iron-icon prefix icon={{icon}}></iron-icon>
+    {{else}}
+      <div prefix>{{yield}}</div>
+    {{/if}}
+  </div>
+  <div class="flex">
+    {{p-input label=label value=value type=type required=required}}
+  </div>
+</div>

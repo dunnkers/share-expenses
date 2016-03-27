@@ -1,0 +1,17 @@
+.google-sign-in {
+  text-transform: none;
+  background-color: #fff;
+  color: #757575;
+  height: 36px;
+  width: 120px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: Roboto, arial, sans-serif;
+}
+
+.google-sign-in img {
+  width: 18px;
+  height: 18px;
+  float: left;
+  letter-spacing: .21px;
+}

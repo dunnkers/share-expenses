@@ -1,9 +1,16 @@
-<ul>
-  {{#each deals as |deal|}}
-    <li>{{deal.description}} - {{deal.amount}}</li>
-  {{else}}
-    Voeg eerst deals toe!
-  {{/each}}
-</ul>
+{{#each deals as |deal|}}
+  <paper-card class="deal" heading={{deal.description}}>
+  <div class="card-content">
+    {{deal.description}}
+  </div>
+  <div class="card-actions">
+    <paper-button>Bewerk</paper-button>
+    <paper-icon-button icon="date-range">Bewerk</paper-icon-button>
+    <span>{{deal.createdAt}}</span>
+  </div>
+  </paper-card>
+{{else}}
+  Voeg eerst deals toe!
+{{/each}}
 
 <paper-fab id="fab" icon="add" {{action "add"}}></paper-fab>

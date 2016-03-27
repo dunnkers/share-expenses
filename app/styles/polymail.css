@@ -1,10 +1,5 @@
 /* Polymer Mail */
 
-#loginscreen {
-  z-index: 1;
-  background-color: rgba(255,255,255,0.5);
-}
-
 #drawerPanel:not([narrow]) paper-scroll-header-panel .scroll-content {
   padding: 30px 0;
   background-color: #fafafa;
