@@ -32,10 +32,14 @@
     </paper-menu>
   </paper-header-panel>
 
-  <paper-header-panel main>
-    <paper-toolbar>
+  <paper-scroll-header-panel main condeses keep-condensed-header>
+    <paper-toolbar class="medium-tall">
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-      <span class="bottom indent title">Samen Betalen</span>
+      <span class="indent title">Samen Betalen</span>
+      <paper-tabs selected="0" class="bottom fit">
+        <paper-tab class="link">DEALS</paper-tab>
+        <paper-tab class="link">TAKEN</paper-tab>
+      </paper-tabs>
     </paper-toolbar>
     <div class="outlet">
       {{#if session.isAuthenticated}}
@@ -48,5 +52,5 @@
       {{/if}}
 
     </div>
-  </paper-header-panel>
+  </paper-scroll-header-panel>
 </paper-drawer-panel>
