@@ -6,7 +6,7 @@
             sizing="cover" preload fade class="fit" />
 
       {{#if session.isAuthenticated}}
-        <img class="middle profile" src={{session.currentUser.avatarURL}}>
+        <img class="middle profile" src={{session.profileImageURL}}>
         <div class="bottom layout vertical">
           <span>{{session.currentUser.name}}</span>
         </div>
@@ -18,8 +18,10 @@
         <paper-icon-item {{action "navigate" "index"}} role="menuitem">
           <iron-icon icon="home" item-icon /> Home
         </paper-icon-item>
-        {{#each user.groups as |group|}}
-          {{group.name}}
+        {{#each session.currentUser.groups as |group|}}
+          <paper-icon-item role="menuitem">
+            <iron-icon item-icon /> {{group.name}}
+          </paper-icon-item>
         {{/each}}
         <paper-icon-item {{action "navigate" "groups.add"}} role="menuitem">
           <iron-icon icon="social:group-add" item-icon /> Groep toevoegen...

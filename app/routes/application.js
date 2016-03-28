@@ -1,29 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel: function () {
-    return this.get('session').fetch().catch(function() {
-      console.log('We caught the session before the model!');
-    });
+  beforeModel() {
+    return this.get('session').fetch()
+      .then(() => console.log('Successfully fetched session!'))
+      .catch((err) => Ember.logger.error('Fetching user model failed.', err));
   },
 
   actions: {
-    signIn: function (provider) {
+    signIn(provider) {
       this.get('session').open('firebase', {
         provider: provider
-      }).then((data) => {
-        // let user = this.store.createRecord('user', {
-        //   id: data.uid,
-        //   name: data.currentUser.displayName
-        // });
-        // user.save().then((res) => console.log('res!',res));
-        // console.log(user);
-        console.log('some data from app route',data);
-        console.log('more data from app route',data.currentUser);
-      });
+      }).then((data) => console.log('Successfully logged in!', data));
     },
 
-    signOut: function () {
+    signOut() {
       this.get('session').close();
     },
 
@@ -32,9 +23,7 @@ export default Ember.Route.extend({
     }
   },
 
-  setupController: function () {
-    Ember.$(window).on('beforeunload', () => {
-      console.log('application ended!');
-    });
+  setupController() {
+    Ember.$(window).on('beforeunload', () => console.log('App unloaded.'));
   }
 });

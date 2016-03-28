@@ -1,10 +1,12 @@
 import Ember from 'ember';
 import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
 
-// export default ToriiFirebaseAdapter.extend({
-//   firebase: Ember.inject.service()
-// });
-/* http://stackoverflow.com/questions/32023653/emberfire-authentication-and-toriifirebaseadapter */
+/*
+ * Dunnkers &copy; 2016
+ *
+ * Code was obtained partly from StackExchange question #32023653;
+ *  `emberfire-authentication-and-toriifirebaseadapter`
+ */
 
 export default ToriiFirebaseAdapter.extend({
   firebase: Ember.inject.service(),
@@ -19,10 +21,7 @@ export default ToriiFirebaseAdapter.extend({
    * @return {Promise<Object>} Updated session info
    */
   open(authData) {
-    return this._findOrCreateUser(authData)
-      .then((user) => {
-        return { currentUser: user };
-      });
+    return this._findOrCreateUser(authData).then((user) => user);
   },
 
   /**
@@ -31,28 +30,13 @@ export default ToriiFirebaseAdapter.extend({
    * @return {Promise<Object>} Updated session info
    */
   fetch() {
-    let ref = this.get('firebase');
-    let authData = ref.getAuth();
+    let authData = this.get('firebase').getAuth();
 
     if (!authData) {
       return Ember.RSVP.Promise.reject(new Error('No Firebase session found'));
     }
 
-    return this._findOrCreateUser(authData)
-      .then((user) => {
-        console.log(user);
-        return { currentUser: user };
-      });
-  },
-
-  /**
-   * Teardown a session. Remove the `session.currentUser`.
-   *
-   * @return {Promise<Object>} Updated session info
-   */
-  close() {
-    this.get('firebase').unauth();
-    return Ember.RSVP.Promise.resolve({ currentUser: null });
+    return this._findOrCreateUser(authData).then((user) => user);
   },
 
   /**
@@ -63,35 +47,24 @@ export default ToriiFirebaseAdapter.extend({
    */
   _findOrCreateUser(authData) {
     let store = this.get('store');
+    let data = authData[authData.provider];
 
     return store.find('user', authData.uid)
+      .then((user) => this.returnUser(user, data))
       .catch(() => {
-        let newUser = store.createRecord('user', this.extractUserProperties(authData));
+        let newUser = store.createRecord('user', {
+          id: authData.uid,
+          name: data.displayName
+        });
 
-        return newUser.save();
+        return newUser.save().then((user) => this.returnUser(user, data));
       });
   },
 
-  /**
-   * Extract the user properties from `authData` that you care about.
-   *
-   * @param  {Object} authData
-   * @return {Object} An updated property hash
-   */
-  extractUserProperties(authData) {
-    var name = 'Unknown';
-    var provider = authData.provider;
-    var userData = authData[provider];
-
-    if (userData.displayName) {
-      name = userData.displayName;
-    } else if (userData.username) {
-      name = userData.username;
-    }
-
+  returnUser(currentUser, data) {
     return {
-      id: authData.uid,
-      name: name
+      currentUser,
+      profileImageURL: data.profileImageURL
     };
   }
 });

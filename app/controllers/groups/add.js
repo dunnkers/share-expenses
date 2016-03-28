@@ -4,13 +4,17 @@ export default Ember.Controller.extend({
   actions: {
     save() {
       console.log('lets save this baby');
-      let newGroup = this.store.createRecord('group', {
+      let user = this.get('session.currentUser');
+      let group = this.store.createRecord('group', {
         name: this.get('name'),
         description: this.get('description'),
-        users: [this.get('session.uid')]
+        users: [ user ]
       });
 
-      newGroup.save().then(() => this.send('back'));
+      user.get('groups').pushObject(group);
+      user.save();
+
+      group.save().then(() => this.send('back'));
     }
   }
 });
