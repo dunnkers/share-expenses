@@ -1,6 +1,6 @@
 {{#each tasks as |task|}}
   {{#unless task.isDeleted}}
-    {{task-comp task=task deleted=(action 'deletedUndo')}}
+    {{task-checkbox task=task deleted=(action 'deletedUndo')}}
   {{/unless}}
 {{else}}
   Voeg eerst taken toe!
@@ -10,10 +10,6 @@
   <iron-icon prefix icon="add"></iron-icon>
 {{/p-input}}
 
-{{!-- <paper-toast opened={{opened}} duration="5000" text="Taak verwijderd.">
-  <paper-button raised {{action "undo"}}>Ongedaan maken</paper-button>
-</paper-toast> --}}
-
-{{#p-toast opened=open duration="5000" text="Taak verwijderd."}}
+{{#p-toast opened=open duration="10000" text="Taak verwijderd."}}
   <paper-button raised {{action "undo"}}>Ongedaan maken</paper-button>
 {{/p-toast}}

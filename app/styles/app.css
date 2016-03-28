@@ -15,13 +15,6 @@ body {
   color: #757575;
 }
 
-/* Paper-input */
-.paper-input *[prefix] {
-  margin: 20px 25px 0px 0px;
-  width: 24px;
-  height: 24px;
-}
-
 /* Deals */
 paper-icon-button.giant {
   width: 75px;
@@ -37,7 +30,15 @@ paper-card.deal {
   height: 30px;
 }
 
-paper-icon-button.delete-task:hover {
+paper-icon-button.delete-task {
+  color: rgba(0, 0, 0, 0.0);
+}
+
+.task-component:hover .delete-task {
+  color: grey;
+}
+
+.task-component:hover paper-icon-button.delete-task:hover {
   color: black;
 }
 

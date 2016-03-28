@@ -1,0 +1,8 @@
+<div class="task-component layout horizontal">
+  {{#p-checkbox class="flex" checked=task.completed}}
+    {{task.description}}
+  {{/p-checkbox}}
+  {{#if hover}}
+    <paper-icon-button icon="cancel" class="delete-task" {{action "delete"}} />
+  {{/if}}
+</div>

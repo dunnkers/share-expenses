@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
       Ember.run.later(() => {
         this.set('open', false);
         this.get('deletedTask').save();
-      }, 5500);
+      }, 10500);
     },
 
     undo() {

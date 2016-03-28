@@ -1,8 +1,15 @@
 <h4>Nieuwe groep aanmaken</h4>
 
-{{p-form-input label="Naam" icon="social:people" value=name}}
+<div class="paper-form-input">
+  <iron-icon prefix icon="social:people" />
+  {{p-input label="Naam" value=name}}
+</div>
 
-{{p-form-input label="Beschrijving" icon="communication:comment" value=description}}
+<div class="paper-form-input">
+  <iron-icon prefix icon="communication:comment" />
+  {{p-input label="Beschrijving" value=description}}
+</div>
 
-<paper-icon-button icon="check" class="giant" {{action "save"}}>
-</paper-icon-button>
+<div class="layout horizontal wrap end-justified">
+  <paper-icon-button class="giant" icon="check" {{action "save"}} />
+</div>
