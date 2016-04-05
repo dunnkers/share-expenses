@@ -1,4 +1,4 @@
-{{#each deals as |deal|}}
+{{#each model.deals as |deal|}}
   <paper-card class="deal" heading={{deal.description}}>
   <div class="card-content">
     {{deal.description}}
@@ -13,4 +13,5 @@
   Voeg eerst deals toe!
 {{/each}}
 
-<paper-fab id="fab" icon="add" {{action "add"}}></paper-fab>
+{{#link-to 'group.deals.add' tagName="paper-fab" id="fab" icon="add"}}{{/link-to}}
+{{!-- <paper-fab id="fab" icon="add" {{action "add"}}></paper-fab> --}}

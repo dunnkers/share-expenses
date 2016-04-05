@@ -14,17 +14,10 @@
     </paper-toolbar>
 
     {{#if session.isAuthenticated}}
-    {{#links-selector tagName="paper-menu" selectable="paper-icon-item" selectedClass="active"}}
+    {{#links-selector tagName="paper-menu" selectable="paper-icon-item"}}
       {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
         <iron-icon icon="home" item-icon /> Home
       {{/link-to}}
-      {{#link-to 'deals' tagName="paper-icon-item" ariaRole="menuitem"}}
-        <iron-icon icon="home" item-icon /> Deals
-      {{/link-to}}
-      {{#link-to 'tasks' tagName="paper-icon-item" ariaRole="menuitem"}}
-        <iron-icon icon="home" item-icon /> Tasks
-      {{/link-to}}
-
       <div class="separator">Groepen</div>
       {{#each session.currentUser.groups as |group|}}
         {{#link-to 'group' group tagName="paper-icon-item" ariaRole="menuitem"}}
@@ -43,30 +36,18 @@
   </paper-header-panel>
 
   <paper-scroll-header-panel main condeses keep-condensed-header>
-    <paper-toolbar class="medium-tall">
-      <paper-icon-button icon="menu" paper-drawer-toggle />
-      <span class="indent title">Samen Betalen</span>
-      {{#if session.isAuthenticated}}
-        {{#links-selector tagName="paper-tabs" selectable="paper-tab" class="bottom fit"}}
-          {{#link-to 'deals' tagName="paper-tab" ariaRole="tab"}}DEALS{{/link-to}}
-          {{#link-to 'tasks' tagName="paper-tab" ariaRole="tab"}}TAKEN{{/link-to}}
-        {{/links-selector}}
-      {{/if}}
-    </paper-toolbar>
-    <div class="outlet">
-      {{#if session.isAuthenticated}}
-        {{outlet}}
-      {{else}}
-        <div class="splash-page layout vertical center">
-          <h2>Welkom bij Samen Betalen!</h2>
-          <iron-icon icon="social:mood" style="width:100px;height:100px;" />
-          <p>Log in met Google om verder te gaan.</p>
-          <paper-button class="google-sign-in" raised {{action "signIn" "google"}}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
-            Inloggen
-          </paper-button>
-        </div>
-      {{/if}}
-    </div>
+    {{#if session.isAuthenticated}}
+      {{outlet}}
+    {{else}}
+      <div class="splash-page layout vertical center">
+        <h2>Welkom bij Samen Betalen!</h2>
+        <iron-icon icon="social:mood" style="width:100px;height:100px;" />
+        <p>Log in met Google om verder te gaan.</p>
+        <paper-button class="google-sign-in" raised {{action "signIn" "google"}}>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+          Inloggen
+        </paper-button>
+      </div>
+    {{/if}}
   </paper-scroll-header-panel>
 </paper-drawer-panel>

@@ -6,8 +6,9 @@ export default Ember.Controller.extend({
       let task = this.store.createRecord('task', {
         description: this.get('description')
       });
-      task.save();
       this.set('description', '');
+      this.get('model.tasks').pushObject(task);
+      this.get('model').save().then(() => task.save());
     },
 
     deleted(task) {

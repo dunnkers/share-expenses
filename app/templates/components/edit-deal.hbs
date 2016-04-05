@@ -1,20 +1,20 @@
-<h4>Nieuwe deal aanmaken</h4>
-
 <div class="paper-form-input">
   <iron-icon prefix icon="assignment"></iron-icon>
-  {{paper-input label="Beschrijving" value=description}}
+  {{paper-input label="Beschrijving" value=deal.description}}
 </div>
 
 <div class="paper-form-input">
   <h2 prefix>#</h2>
-  {{paper-input label="Aantal" value=amount type="number"}}
+  {{paper-input label="Aantal" value=deal.amount type="number"}}
 </div>
 
 <div class="paper-form-input">
   <iron-icon prefix icon="editor:attach-money"></iron-icon>
-  {{paper-input label="Kosten" value=cost type="number"}}
+  {{paper-input label="Kosten" value=deal.cost type="number"}}
 </div>
 
 <div class="layout horizontal wrap end-justified">
   <paper-icon-button class="giant" icon="check" {{action "save"}} />
 </div>
+
+{{deal.description}}

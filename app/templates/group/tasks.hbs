@@ -1,4 +1,5 @@
-{{#each tasks as |task|}}
+<h4>TASKS</h4>
+{{#each model.tasks as |task| }}
   {{#unless task.isDeleted}}
     {{task-checkbox task=task deleted=(action 'deleted')}}
   {{/unless}}
@@ -7,11 +8,11 @@
 {{/each}}
 
 {{#paper-input label="Nieuwe taak..." value=description insert-newline="add"}}
-  <iron-icon prefix icon="add"></iron-icon>
+  <iron-icon prefix icon="add" />
 {{/paper-input}}
 
 {{!-- Setting the toast duration to 0 disables auto-closing --}}
 <paper-toast opened={{opened}} duration=0 text="Taak verwijderd.">
   <paper-button raised {{action "undo"}}>Ongedaan maken</paper-button>
-  <paper-icon-button icon="close" {{action "close"}}></paper-icon-button>
+  <paper-icon-button icon="close" {{action "close"}} />
 </paper-toast>

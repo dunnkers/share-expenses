@@ -15,9 +15,5 @@ export default Ember.Controller.extend({
 
       group.save().then(() => this.send('back'));
     }
-  },
-
-  isDirty: Ember.computed('model', function() {
-    return this.get('model.isDirty');
-  })
+  }
 });

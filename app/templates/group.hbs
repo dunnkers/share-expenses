@@ -1,10 +1,14 @@
-<div class="layout horizontal">
+<paper-toolbar class="medium-tall">
+  <paper-icon-button icon="menu" paper-drawer-toggle />
+  <span class="indent title">{{model.name}}</span>
+  {{#links-selector tagName="paper-tabs" selectable="paper-tab" class="bottom fit"}}
+    {{#link-to 'group.deals' tagName="paper-tab" ariaRole="tab"}}DEALS{{/link-to}}
+    {{#link-to 'group.tasks' tagName="paper-tab" ariaRole="tab"}}TAKEN{{/link-to}}
+  {{/links-selector}}
+  {{!-- link-to `group.edit` --}}
+  <paper-icon-button icon="create"></paper-icon-button>
+</paper-toolbar>
 
-  <h3 class="flex">{{model.name}}</h3>
-
-  {{#link-to 'group.edit' model tagName="paper-button"}}
-    <iron-icon icon="create" /> Bewerken
-  {{/link-to}}
+<div class="outlet">
+  {{outlet}}
 </div>
-
-{{outlet}}
