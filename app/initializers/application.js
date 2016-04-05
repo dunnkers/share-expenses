@@ -20,5 +20,8 @@ export default {
       })
     });
 
+    Ember.LinkComponent.reopen({
+      classNameBindings: ['active:iron-selected']
+    });
   }
 };

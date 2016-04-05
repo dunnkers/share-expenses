@@ -13,36 +13,33 @@
       {{/if}}
     </paper-toolbar>
 
-    <paper-menu selectable="paper-icon-item" on-iron-activate="menuSelect"
-      selected="0">
-      {{#if session.isAuthenticated}}
-        {{#link-to 'index' tagName="paper-icon-item" role="menuitem"}}
-          <iron-icon icon="home" item-icon /> Home
+    {{#if session.isAuthenticated}}
+    {{#links-selector tagName="paper-menu" selectable="paper-icon-item" selectedClass="active"}}
+      {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
+        <iron-icon icon="home" item-icon /> Home
+      {{/link-to}}
+      {{#link-to 'deals' tagName="paper-icon-item" ariaRole="menuitem"}}
+        <iron-icon icon="home" item-icon /> Deals
+      {{/link-to}}
+      {{#link-to 'tasks' tagName="paper-icon-item" ariaRole="menuitem"}}
+        <iron-icon icon="home" item-icon /> Tasks
+      {{/link-to}}
+
+      <div class="separator">Groepen</div>
+      {{#each session.currentUser.groups as |group|}}
+        {{#link-to 'group' group tagName="paper-icon-item" ariaRole="menuitem"}}
+          <iron-icon icon="account-box" item-icon /> {{group.name}}
         {{/link-to}}
-        {{#link-to 'deals' tagName="paper-icon-item" role="menuitem"}}
-          <iron-icon icon="home" item-icon /> Deals
-        {{/link-to}}
-        {{#link-to 'tasks' tagName="paper-icon-item" role="menuitem"}}
-          <iron-icon icon="home" item-icon /> Tasks
-        {{/link-to}}
-        <paper-icon-item {{action "navigate" "index"}} role="menuitem">
-          <iron-icon icon="home" item-icon /> Home
-        </paper-icon-item>
-        <div class="separator">Groepen</div>
-        {{#each session.currentUser.groups as |group|}}
-          <paper-icon-item {{action "navigate" "group" group}} role="menuitem">
-            <iron-icon icon="account-box" item-icon /> {{group.name}}
-          </paper-icon-item>
-        {{/each}}
-        <paper-icon-item {{action "navigate" "groups.add"}} role="menuitem">
-          <iron-icon icon="social:group-add" item-icon /> Groep toevoegen...
-        </paper-icon-item>
-        <div class="separator"></div>
-        <paper-icon-item {{action "signOut"}} role="menuitem">
-          <iron-icon icon="power-settings-new" item-icon /> Uitloggen
-        </paper-icon-item>
-      {{/if}}
-    </paper-menu>
+      {{/each}}
+      {{#link-to 'groups.add' tagName="paper-icon-item" ariaRole="menuitem"}}
+        <iron-icon icon="social:group-add" item-icon /> Groep toevoegen...
+      {{/link-to}}
+    {{/links-selector}}
+    <div class="separator"></div>
+    <paper-icon-item {{action "signOut"}} ariaRole="menuitem">
+      <iron-icon icon="power-settings-new" item-icon /> Uitloggen
+    </paper-icon-item>
+    {{/if}}
   </paper-header-panel>
 
   <paper-scroll-header-panel main condeses keep-condensed-header>
@@ -50,10 +47,10 @@
       <paper-icon-button icon="menu" paper-drawer-toggle />
       <span class="indent title">Samen Betalen</span>
       {{#if session.isAuthenticated}}
-        {{#paper-tabs class="bottom fit"}}
-          {{#link-to 'deals' tagName="paper-tab" role="tab" ariaRole="tab"}}DEALS{{/link-to}}
-          {{#link-to 'tasks' tagName="paper-tab" role="tab" ariaRole="tab"}}TAKEN{{/link-to}}
-        {{/paper-tabs}}
+        {{#links-selector tagName="paper-tabs" selectable="paper-tab" class="bottom fit"}}
+          {{#link-to 'deals' tagName="paper-tab" ariaRole="tab"}}DEALS{{/link-to}}
+          {{#link-to 'tasks' tagName="paper-tab" ariaRole="tab"}}TAKEN{{/link-to}}
+        {{/links-selector}}
       {{/if}}
     </paper-toolbar>
     <div class="outlet">
