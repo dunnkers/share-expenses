@@ -1,15 +1,17 @@
 {{#each tasks as |task|}}
   {{#unless task.isDeleted}}
-    {{task-checkbox task=task deleted=(action 'deletedUndo')}}
+    {{task-checkbox task=task deleted=(action 'deleted')}}
   {{/unless}}
 {{else}}
   Voeg eerst taken toe!
 {{/each}}
 
-{{#p-input label="Nieuwe taak..." value=description insert-newline="add"}}
+{{#paper-input label="Nieuwe taak..." value=description insert-newline="add"}}
   <iron-icon prefix icon="add"></iron-icon>
-{{/p-input}}
+{{/paper-input}}
 
-{{#p-toast opened=open duration="10000" text="Taak verwijderd."}}
+{{!-- Setting the toast duration to 0 disables auto-closing --}}
+<paper-toast opened={{opened}} duration=0 text="Taak verwijderd.">
   <paper-button raised {{action "undo"}}>Ongedaan maken</paper-button>
-{{/p-toast}}
+  <paper-icon-button icon="close" {{action "close"}}></paper-icon-button>
+</paper-toast>

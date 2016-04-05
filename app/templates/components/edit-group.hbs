@@ -1,0 +1,13 @@
+<div class="paper-form-input">
+  <iron-icon prefix icon="social:people" />
+  {{paper-input label="Naam" value=group.name}}
+</div>
+
+<div class="paper-form-input">
+  <iron-icon prefix icon="communication:comment" />
+  {{paper-input label="Beschrijving" value=group.description}}
+</div>
+
+<div class="layout horizontal wrap end-justified">
+  <paper-icon-button class="giant" icon="check" {{action "save"}} />
+</div>

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   hover: false,
+  classNames: ['task-component', 'layout', 'horizontal'],
 
   mouseEnter() { this.set('hover', true); },
 

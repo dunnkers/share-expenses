@@ -6,13 +6,23 @@
   }
 
   .paper-form-input *[prefix] {
+    @apply(--layout-self-center);
+
     margin: 20px 25px 0px 0px;
     width: 24px;
     height: 24px;
-    @apply(--layout-self-center);
   }
 
   .paper-form-input paper-input {
     @apply(--layout-flex);
+  }
+
+  /* Paper tabs link */
+  paper-tabs paper-tab[link] a {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-center);
+
+    color: inherit;
+    text-decoration: inherit;
   }
 </style>

@@ -13,14 +13,25 @@
       {{/if}}
     </paper-toolbar>
 
-    <paper-menu selected="0" selectable="paper-icon-item" on-iron-activate="menuSelect">
+    <paper-menu selectable="paper-icon-item" on-iron-activate="menuSelect"
+      selected="0">
       {{#if session.isAuthenticated}}
+        {{#link-to 'index' tagName="paper-icon-item" role="menuitem"}}
+          <iron-icon icon="home" item-icon /> Home
+        {{/link-to}}
+        {{#link-to 'deals' tagName="paper-icon-item" role="menuitem"}}
+          <iron-icon icon="home" item-icon /> Deals
+        {{/link-to}}
+        {{#link-to 'tasks' tagName="paper-icon-item" role="menuitem"}}
+          <iron-icon icon="home" item-icon /> Tasks
+        {{/link-to}}
         <paper-icon-item {{action "navigate" "index"}} role="menuitem">
           <iron-icon icon="home" item-icon /> Home
         </paper-icon-item>
+        <div class="separator">Groepen</div>
         {{#each session.currentUser.groups as |group|}}
-          <paper-icon-item role="menuitem">
-            <iron-icon item-icon /> {{group.name}}
+          <paper-icon-item {{action "navigate" "group" group}} role="menuitem">
+            <iron-icon icon="account-box" item-icon /> {{group.name}}
           </paper-icon-item>
         {{/each}}
         <paper-icon-item {{action "navigate" "groups.add"}} role="menuitem">
@@ -39,10 +50,10 @@
       <paper-icon-button icon="menu" paper-drawer-toggle />
       <span class="indent title">Samen Betalen</span>
       {{#if session.isAuthenticated}}
-        <paper-tabs selected="0" class="bottom fit">
-          {{#link-to "deals" tagName="paper-tab"}}DEALS{{/link-to}}
-          {{#link-to "tasks" tagName="paper-tab"}}TAKEN{{/link-to}}
-        </paper-tabs>
+        {{#paper-tabs class="bottom fit"}}
+          {{#link-to 'deals' tagName="paper-tab" role="tab" ariaRole="tab"}}DEALS{{/link-to}}
+          {{#link-to 'tasks' tagName="paper-tab" role="tab" ariaRole="tab"}}TAKEN{{/link-to}}
+        {{/paper-tabs}}
       {{/if}}
     </paper-toolbar>
     <div class="outlet">

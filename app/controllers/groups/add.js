@@ -3,11 +3,10 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     save() {
-      console.log('lets save this baby');
       let user = this.get('session.currentUser');
       let group = this.store.createRecord('group', {
-        name: this.get('name'),
-        description: this.get('description'),
+        name: this.get('model.name'),
+        description: this.get('model.description'),
         users: [ user ]
       });
 
@@ -16,5 +15,9 @@ export default Ember.Controller.extend({
 
       group.save().then(() => this.send('back'));
     }
-  }
+  },
+
+  isDirty: Ember.computed('model', function() {
+    return this.get('model.isDirty');
+  })
 });

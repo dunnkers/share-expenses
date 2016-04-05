@@ -1,0 +1,10 @@
+<div class="layout horizontal">
+
+  <h3 class="flex">{{model.name}}</h3>
+
+  {{#link-to 'group.edit' model tagName="paper-button"}}
+    <iron-icon icon="create" /> Bewerken
+  {{/link-to}}
+</div>
+
+{{outlet}}
