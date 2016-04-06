@@ -17,11 +17,9 @@ export default Ember.Controller.extend({
         this.destroy();
       }
 
+      // soft-delete task from list
       this.set('deletedTask', task);
-
-      // remove task from list softly
-      this.set('idx', this.get('model.tasks').indexOf(task));
-      this.get('model.tasks').removeAt(this.get('idx'));
+      task.set('deleted', true);
 
       // set parameter to indicate an opened toast and set timer to close
       this.set('opened', true);
@@ -32,7 +30,7 @@ export default Ember.Controller.extend({
       Ember.run.cancel(this.get('timer'));
       this.set('opened', false);
       Ember.Logger.debug('Rolling back task deletion. ("%s")', this.get('deletedTask.id'));
-      this.get('model.tasks').insertAt(this.get('idx'), this.get('deletedTask'));
+      this.get('deletedTask').set('deleted', false);
     },
 
     close() {

@@ -1,6 +1,6 @@
 <h4>TASKS</h4>
 {{#each model.tasks as |task| }}
-  {{#unless task.isDeleted}}
+  {{#unless task.deleted}}
     {{task-checkbox task=task deleted=(action 'deleted')}}
   {{/unless}}
 {{else}}
