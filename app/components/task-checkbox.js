@@ -10,10 +10,7 @@ export default Ember.Component.extend({
 
   actions: {
     delete() {
-      this.get('task').deleteRecord();
-      if (this.get('task.isDeleted')) {
-        this.get('deleted')(this.get('task'));
-      }
+      this.get('deleted')(this.get('task'));
     }
   },
 

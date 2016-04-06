@@ -8,11 +8,22 @@ export default Ember.Controller.extend({
       });
       this.set('description', '');
       this.get('model.tasks').pushObject(task);
-      this.get('model').save().then(() => task.save());
+      task.save().then(() => this.get('model').save());
     },
 
     deleted(task) {
+      // Delete task permanently that was waiting to be delete
+      if (this.get('opened')) {
+        this.destroy();
+      }
+
       this.set('deletedTask', task);
+
+      // remove task from list softly
+      this.set('idx', this.get('model.tasks').indexOf(task));
+      this.get('model.tasks').removeAt(this.get('idx'));
+
+      // set parameter to indicate an opened toast and set timer to close
       this.set('opened', true);
       this.set('timer', Ember.run.debounce(this, this.close, 3000));
     },
@@ -20,7 +31,8 @@ export default Ember.Controller.extend({
     undo() {
       Ember.run.cancel(this.get('timer'));
       this.set('opened', false);
-      this.get('deletedTask').rollbackAttributes();
+      Ember.Logger.debug('Rolling back task deletion. ("%s")', this.get('deletedTask.id'));
+      this.get('model.tasks').insertAt(this.get('idx'), this.get('deletedTask'));
     },
 
     close() {
@@ -31,7 +43,11 @@ export default Ember.Controller.extend({
 
   close() {
     this.set('opened', false);
-    Ember.Logger.debug('Deleting task permanently.', this.get('deletedTask'));
-    this.get('deletedTask').save();
+    this.destroy();
+  },
+
+  destroy() {
+    Ember.Logger.debug('Deleting task permanently. ("%s")', this.get('deletedTask.id'));
+    this.get('deletedTask').destroyRecord().then(() => this.get('model').save());
   }
 });

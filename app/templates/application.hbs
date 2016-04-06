@@ -1,3 +1,5 @@
+
+
 <paper-drawer-panel id="drawerPanel">
   <paper-header-panel drawer>
     <paper-toolbar id="navheader" class="tall">
@@ -39,7 +41,11 @@
     {{#if session.isAuthenticated}}
       {{outlet}}
     {{else}}
-      <div class="splash-page layout vertical center">
+      <paper-toolbar class="medium-tall">
+        <paper-icon-button icon="menu" paper-drawer-toggle />
+        <span class="indent title">Samen Betalen</span>
+      </paper-toolbar>
+      <div main class="splash-page layout vertical center">
         <h2>Welkom bij Samen Betalen!</h2>
         <iron-icon icon="social:mood" style="width:100px;height:100px;" />
         <p>Log in met Google om verder te gaan.</p>

@@ -4,8 +4,10 @@
     {{deal.description}}
   </div>
   <div class="card-actions">
-    <paper-button>Bewerk</paper-button>
-    <paper-icon-button icon="date-range">Bewerk</paper-icon-button>
+    {{#link-to 'group.deals.deal' deal tagName="paper-button"}}
+      Bewerken
+    {{/link-to}}
+    <paper-icon-button icon="date-range"></paper-icon-button>
     <span>{{deal.createdAt}}</span>
   </div>
   </paper-card>

@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('edit');
     this.route('deals', function() {
       this.route('add');
+      this.route('deal', { path: '/:deal_id' });
     });
     this.route('tasks');
   });
