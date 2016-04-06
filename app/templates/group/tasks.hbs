@@ -1,7 +1,7 @@
 <h4>TASKS</h4>
-{{#each model.tasks as |task| }}
+{{#each model.tasks as |task|}}
   {{#unless task.deleted}}
-    {{task-checkbox task=task deleted=(action 'deleted')}}
+    {{task-checkbox task=task deletedTask=deletedTask}}
   {{/unless}}
 {{else}}
   Voeg eerst taken toe!
@@ -11,8 +11,4 @@
   <iron-icon prefix icon="add" />
 {{/paper-input}}
 
-{{!-- Setting the toast duration to 0 disables auto-closing --}}
-<paper-toast opened={{opened}} duration=0 text="Taak verwijderd.">
-  <paper-button raised {{action "undo"}}>Ongedaan maken</paper-button>
-  <paper-icon-button icon="close" {{action "close"}} />
-</paper-toast>
+{{undo-toast deletedModel=deletedTask text="Taak verwijderd."}}

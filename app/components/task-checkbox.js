@@ -10,7 +10,8 @@ export default Ember.Component.extend({
 
   actions: {
     delete() {
-      this.get('deleted')(this.get('task'));
+      this.set('task.deleted', true);
+      this.set('deletedTask', this.get('task'));
     }
   },
 

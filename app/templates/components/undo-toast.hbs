@@ -1,0 +1,5 @@
+{{!-- Setting the toast duration to 0 disables auto-closing --}}
+<paper-toast opened={{opened}} duration=0 text={{text}}>
+  <paper-button raised {{action "undo"}}>Ongedaan maken</paper-button>
+  <paper-icon-button icon="close" {{action "close"}} />
+</paper-toast>
