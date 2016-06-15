@@ -1,6 +1,6 @@
 /*jshint node:true*/
 /* global require, module */
-var vulcanize = require('./broccoli-vulcanize-html.js');
+var vulcanize = require('broccoli-vulcanize');
 var pickFiles = require('broccoli-static-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
@@ -13,7 +13,6 @@ module.exports = function(defaults) {
   var polymerVulcanize = vulcanize('app', {
     input: 'elements.html',
     output: 'assets/vulcanized.html',
-    excludes: [/*/^data:/, /^http[s]?:/, /^\//*/],
     inlineCss: true
   });
 

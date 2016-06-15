@@ -22,7 +22,7 @@
     "broccoli-asset-rev": "^2.2.0",
     "broccoli-merge-trees": "^1.1.1",
     "broccoli-static-compiler": "^0.2.2",
-    "broccoli-vulcanize": "^2.0.3",
+    "broccoli-vulcanize": "^3.0.0",
     "broccoli-writer": "^0.1.1",
     "clone": "^1.0.2",
     "ember-ajax": "0.7.1",
@@ -47,7 +47,6 @@
     "loader.js": "^4.0.0",
     "mkdirp": "^0.5.1",
     "rsvp": "^3.2.1",
-    "torii": "0.6.1",
-    "vulcanize": "^1.14.7"
+    "torii": "0.6.1"
   }
 }
