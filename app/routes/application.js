@@ -2,15 +2,16 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   beforeModel() {
-    return this.get('session').fetch()
-      .then(() => Ember.Logger.debug('Successfully fetched session!'))
-      .catch((err) => Ember.Logger.debug('No user model fetched.', err));
+    return this.get('session').fetch();
   },
 
   actions: {
     signIn(provider) {
       this.get('session').open('firebase', {
-        provider: provider
+        provider: provider,
+        settings: {
+          scope:'email'
+        }
       }).then((data) => Ember.Logger.debug('Successfully logged in!', data));
     },
 

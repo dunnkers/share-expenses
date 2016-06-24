@@ -5,13 +5,18 @@ module.exports = function(environment) {
     modulePrefix: 'share-expenses',
     environment: environment,
     contentSecurityPolicy: {
-      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
-      'frame-src': "'self' https://*.firebaseio.com",
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.firebaseio.com",
+      'script-src': '"self" "unsafe-eval" apis.google.com',
+      'frame-src': '"self" https://*.firebaseapp.com',
+      'connect-src': '"self" wss://*.firebaseio.com https://*.googleapis.com',
       'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
       'font-src': "'self' https://fonts.gstatic.com"
     },
-    firebase: 'https://glaring-fire-5247.firebaseio.com/',
+    firebase: {
+      apiKey: "AIzaSyCdsfecOXJLm86TbUwfFqlha9TlJ8WyQ5I",
+      authDomain: "ffbetalen.firebaseapp.com",
+      databaseURL: "https://ffbetalen.firebaseio.com",
+      storageBucket: "ffbetalen.appspot.com",
+    },
     torii: {
       sessionServiceName: 'session'
     },

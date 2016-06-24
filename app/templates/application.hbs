@@ -8,9 +8,10 @@
             sizing="cover" preload fade class="fit" />
 
       {{#if session.isAuthenticated}}
-        <img class="middle profile" src={{session.profileImageURL}}>
+        <img class="middle profile" src={{session.currentUser.photoURL}}>
         <div class="bottom layout vertical">
-          <span>{{session.currentUser.name}}</span>
+          <span>{{session.currentUser.displayName}}</span>
+          <span>{{session.currentUser.email}}</span>
         </div>
       {{/if}}
     </paper-toolbar>

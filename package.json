@@ -1,4 +1,4 @@
-  {
+{
   "name": "share-expenses",
   "version": "0.0.0",
   "description": "Small description for share-expenses goes here",
@@ -43,9 +43,9 @@
     "ember-load-initializers": "^0.5.1",
     "ember-onbeforeunload": "1.0.0",
     "ember-resolver": "^2.0.3",
-    "emberfire": "1.6.6",
     "ember-welcome-page": "^1.0.1",
+    "emberfire": "2.0.0",
     "loader.js": "^4.0.1",
-    "torii": "0.6.1"
+    "torii": "0.8.0"
   }
 }
