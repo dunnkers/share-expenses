@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   beforeModel() {
-    return this.get('session').fetch();
+    return this.get('session').fetch().catch(() => Ember.Logger.debug('No session found.'));
   },
 
   actions: {
@@ -12,7 +12,7 @@ export default Ember.Route.extend({
         settings: {
           scope:'email'
         }
-      }).then((data) => Ember.Logger.debug('Successfully logged in!', data));
+      });
     },
 
     signOut() {

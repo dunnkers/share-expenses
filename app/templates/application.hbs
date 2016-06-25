@@ -10,8 +10,8 @@
       {{#if session.isAuthenticated}}
         <img class="middle profile" src={{session.currentUser.photoURL}}>
         <div class="bottom layout vertical">
-          <span>{{session.currentUser.displayName}}</span>
-          <span>{{session.currentUser.email}}</span>
+          <span>{{session.record.name}}</span>
+          <span>{{session.record.email}}</span>
         </div>
       {{/if}}
     </paper-toolbar>
@@ -22,7 +22,7 @@
         <iron-icon icon="home" item-icon /> Home
       {{/link-to}}
       <div class="separator">Groepen</div>
-      {{#each session.currentUser.groups as |group|}}
+      {{#each session.record.groups as |group|}}
         {{#link-to 'group' group tagName="paper-icon-item" ariaRole="menuitem"}}
           <iron-icon icon="account-box" item-icon /> {{group.name}}
         {{/link-to}}
