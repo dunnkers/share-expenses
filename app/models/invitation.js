@@ -1,0 +1,16 @@
+import Ember from 'ember';
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  email: DS.attr('string'),
+  failed: DS.attr('boolean'),
+  succeed: DS.attr('boolean'),
+  date: DS.attr('date'),
+  failure: DS.attr('string'),
+
+  group: DS.belongsTo('group'),
+
+  loading: Ember.computed('failed', 'succeed', function() {
+    return !this.get('failed') && !this.get('succeed');
+  }),
+});

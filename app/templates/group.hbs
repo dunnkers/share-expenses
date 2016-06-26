@@ -1,12 +1,21 @@
-<paper-toolbar class="medium-tall">
+<paper-toolbar class="tall">
   <paper-icon-button icon="menu" paper-drawer-toggle />
   <span class="indent title">{{model.name}}</span>
+  <span class="middle">
+    <p>
+      <small><i>{{model.description}}</i></small>
+    </p>
+    {{#each model.users as |user|}}
+      <div>
+        <img class="avatar" src={{user.avatar}}>
+      </div>
+    {{/each}}
+  </span>
   {{#links-selector tagName="paper-tabs" selectable="paper-tab" class="bottom fit"}}
     {{#link-to 'group.deals' tagName="paper-tab" ariaRole="tab"}}DEALS{{/link-to}}
     {{#link-to 'group.tasks' tagName="paper-tab" ariaRole="tab"}}TAKEN{{/link-to}}
   {{/links-selector}}
-  {{!-- link-to `group.edit` --}}
-  <paper-icon-button icon="create"></paper-icon-button>
+  {{#link-to 'group.edit' tagName="paper-icon-button" icon="settings"}}{{/link-to}}
 </paper-toolbar>
 
 <div class="outlet">

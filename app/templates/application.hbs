@@ -1,5 +1,3 @@
-
-
 <paper-drawer-panel id="drawerPanel">
   <paper-header-panel drawer>
     <paper-toolbar id="navheader" class="tall">
@@ -42,7 +40,7 @@
     {{#if session.isAuthenticated}}
       {{outlet}}
     {{else}}
-      <paper-toolbar class="medium-tall">
+      <paper-toolbar class="tall">
         <paper-icon-button icon="menu" paper-drawer-toggle />
         <span class="indent title">Samen Betalen</span>
       </paper-toolbar>

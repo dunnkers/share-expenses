@@ -21,7 +21,8 @@ export default {
     });
 
     Ember.LinkComponent.reopen({
-      classNameBindings: ['active:iron-selected']
+      classNameBindings: ['active:iron-selected'],
+      attributeBindings: ['icon']
     });
   }
 };

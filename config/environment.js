@@ -20,6 +20,9 @@ module.exports = function(environment) {
     torii: {
       sessionServiceName: 'session'
     },
+    moment: {
+      includeLocales: ['nl']
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

@@ -18,6 +18,8 @@ Router.map(function() {
     });
     this.route('tasks');
   });
+
+  this.route('invite');
 });
 
 export default Router;

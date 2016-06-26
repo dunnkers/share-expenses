@@ -41,6 +41,10 @@ export default Ember.Component.extend({
   },
 
   destroy() {
+    if (!this.get('model')) {
+      return;
+    }
+    
     Ember.Logger.debug('Deleting model permanently. ("%s")', this.get('model.id'));
     this.get('model').destroyRecord();
   }

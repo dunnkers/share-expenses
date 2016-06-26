@@ -35,6 +35,11 @@ paper-icon-item.iron-selected iron-icon {
   flex-shrink: 0;
 }
 
+#navheader .bottom :last-child {
+  font-size: small;
+  opacity: 0.8;
+}
+
 #navheader iron-image {
   background-blend-mode: multiply;
   background-repeat: no-repeat;
@@ -47,6 +52,12 @@ paper-icon-item.iron-selected iron-icon {
   width: 64px;
   height: 64px;
   margin-bottom: 20px;
+}
+
+img.avatar {
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
 }
 
 #coverimage {

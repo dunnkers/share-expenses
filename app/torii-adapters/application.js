@@ -19,7 +19,8 @@ export default ToriiFirebaseAdapter.extend({
       return this.get('store').createRecord('user', {
         id: session.uid,
         name: session.currentUser.displayName,
-        email: session.currentUser.email
+        email: session.currentUser.email,
+        avatar: session.currentUser.photoURL
       }).save();
     }).then((user) => {
       session.record = user;

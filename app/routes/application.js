@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  moment: Ember.inject.service(),
+
   beforeModel() {
+    this.get('moment').changeLocale('nl');
     return this.get('session').fetch().catch(() => Ember.Logger.debug('No session found.'));
   },
 
@@ -17,10 +20,6 @@ export default Ember.Route.extend({
 
     signOut() {
       this.get('session').close();
-    },
-
-    navigate(route, ...models) {
-      this.controller.transitionToRoute(route, ...models);
     }
   },
 
