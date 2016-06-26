@@ -20,7 +20,7 @@ export default Ember.Component.extend({
         return;
       }
       if (this.get('group').get('invitations').getEach('email').contains(email)) {
-        this.set('error', 'Je hebt dit persoon al uitgenodigd dude!');
+        this.set('error', 'Je hebt deze persoon al uitgenodigd dude!');
         return;
       }
 
