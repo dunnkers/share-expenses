@@ -32,6 +32,26 @@ paper-icon-button.giant {
 
 paper-card.deal {
   margin: 15px;
+  width: 350px;
+}
+
+.deal .edit {
+  float: right;
+}
+
+.deal.new {
+  border: 1px dashed #76c261;
+}
+
+.deal.updated {
+  border: 1px dashed #757575;
+}
+
+small [secondary] {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #737373;
 }
 
 /* Tasks */

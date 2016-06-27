@@ -1,0 +1,33 @@
+<paper-card class="deal {{if deal.isNew "new"}} {{if isUpdated "updated"}}">
+  <div class="card-content">
+    {{#if deal.editing}}
+      <paper-icon-button class="edit" icon="check-circle" {{action "save"}} />
+      <paper-icon-button class="edit" icon="block" {{action "cancel"}} />
+
+      <div class="paper-form-input">
+        <iron-icon prefix icon="assignment"></iron-icon>
+        {{paper-input label="Beschrijving" value=deal.description}}
+      </div>
+
+      <div class="paper-form-input">
+        <h2 prefix>#</h2>
+        {{paper-input label="Aantal" value=deal.amount type="number"}}
+      </div>
+
+      <div class="paper-form-input">
+        <iron-icon prefix icon="editor:attach-money"></iron-icon>
+        {{paper-input label="Kosten" value=deal.cost type="number"}}
+      </div>
+    {{else}}
+      <paper-icon-button class="edit" icon="create" {{action "edit"}} />
+      <paper-icon-button class="edit" icon="delete" {{action "delete"}} />
+      <h3>{{deal.description}}</h3>
+      <small secondary>{{deal.amount}}x</small>
+      <h4>€{{deal.cost}},-</h4>
+    {{/if}}
+    <iron-icon icon="event" /> {{moment-from-now deal.createdAt}} aangemaakt
+  </div>
+  <div class="card-actions">
+    <small>participant avatars here ...</small>
+  </div>
+</paper-card>

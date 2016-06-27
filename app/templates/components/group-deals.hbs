@@ -1,0 +1,16 @@
+<p>
+  {{#each group.users as |user|}}
+    <paper-card>
+      <h4>{{user.name}}</h4>
+      <img class="avatar" src={{user.avatar}}>
+    </paper-card>
+  {{/each}}
+</p>
+
+{{#each group.deals as |deal|}}
+  {{deal-card deal=deal}}
+{{else}}
+  Voeg eerst deals toe!
+{{/each}}
+
+<paper-fab id="fab" icon="add" {{action "addDeal"}} />
