@@ -5,7 +5,6 @@ export default DS.Model.extend({
   email: DS.attr('string'),
   failed: DS.attr('boolean'),
   succeed: DS.attr('boolean'),
-  date: DS.attr('date'),
   failure: DS.attr('string'),
 
   group: DS.belongsTo('group'),
@@ -13,4 +12,8 @@ export default DS.Model.extend({
   loading: Ember.computed('failed', 'succeed', function() {
     return !this.get('failed') && !this.get('succeed');
   }),
+
+  date: DS.attr('date', {
+    defaultValue() { return new Date(); }
+  })
 });

@@ -30,8 +30,7 @@ export default Ember.Component.extend({
       // even invite this user.
       let invitation = this.get('store').createRecord('invitation', {
         email: email,
-        group: this.get('group'),
-        date: new Date()
+        group: this.get('group')
       });
       invitation.save();
       this.get('group').save();
