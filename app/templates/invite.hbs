@@ -1,13 +1,12 @@
-
-<h2>Hé! Je bent uitgenodigd om deel te nemen aan {{group}}!</h2>
-
-{{#if session.isAuthenticated}}
-  {{!-- TODO Check whether the currently logged in user already has joined this group --}}
-  <a href="http://localhost:3000/verify?uid={{session.uid}}&token={{token}}">
-    Deelnemen aan {{group}}!
-  </a>
+<div main class="splash-page layout vertical center">
+{{#if succeed}}
+  <h1>Je zit nu in {{group}}!</h1>
+  <h1>😀</h1>
+{{else if failure}}
+  <h1>Guur. Dat was {{failure}}.</h1>
+  <h1>😬</h1>
 {{else}}
-  <p>
-    Je zult eerst even moeten inloggen!
-  </p>
+  <h1>Bezig met deelnemen aan {{group}}!</h1>
+  <paper-spinner active></paper-spinner>
 {{/if}}
+</div>
