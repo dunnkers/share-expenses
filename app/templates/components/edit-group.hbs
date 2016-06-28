@@ -20,7 +20,7 @@
 <h5>Uitgenodigde personen</h5>
 <div role="listbox">
   {{#each group.invitations as |invitation|}}
-    <paper-icon-item class="invitation">
+    <paper-icon-item class="invitation {{if invitation.isNew "new"}}">
       <iron-icon icon="account-circle" class="avatar" item-icon />
       <paper-item-body class="flex" two-line>
         <div>{{invitation.email}}</div>

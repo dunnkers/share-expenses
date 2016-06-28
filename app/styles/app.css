@@ -80,6 +80,10 @@ paper-toast paper-button {
   max-width: 450px;
 }
 
+.invitation.new {
+  border: 1px dashed #757575;
+}
+
 .invitation paper-spinner-lite {
   width: 18px;
   height: 18px;

@@ -32,8 +32,6 @@ export default Ember.Component.extend({
         email: email,
         group: this.get('group')
       });
-      invitation.save();
-      this.get('group').save();
 
       let data = invitation.toJSON();
       data.group = {
@@ -44,6 +42,7 @@ export default Ember.Component.extend({
       Ember.$.post('http://localhost:3000/invite', data).done(() => {
         invitation.set('succeed', true);
         invitation.save();
+        this.get('group').save();
       }).fail((err) => {
         invitation.set('failed', true);
         switch (err.responseText) {
@@ -62,7 +61,6 @@ export default Ember.Component.extend({
           default:
             invitation.set('failure', 'onbekende fout');
         }
-        invitation.save();
       });
     }
   },
