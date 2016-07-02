@@ -65,10 +65,9 @@ export default Ember.Component.extend({
     }
   },
 
-  inviteDisabled: Ember.computed('invitationEmail', function() {
-    return !this.get('invitationEmail') || !this.get('invitationEmail').trim();
-  }),
+  inviteDisabled: Ember.computed.empty('invitationEmail'),
+  invalid: Ember.computed.bool('error'),
 
-  invitationSorting: ['date'],
+  invitationSorting: ['date:desc'],
   invitations: Ember.computed.sort('group.invitations', 'invitationSorting'),
 });

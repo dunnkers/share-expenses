@@ -9,9 +9,7 @@ export default DS.Model.extend({
 
   group: DS.belongsTo('group'),
 
-  loading: Ember.computed('failed', 'succeed', function() {
-    return !this.get('failed') && !this.get('succeed');
-  }),
+  loading: Ember.computed.or('succeed', 'failed', 'isLoading'),
 
   date: DS.attr('date', {
     defaultValue() { return new Date(); }

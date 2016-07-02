@@ -12,35 +12,34 @@
 <div class="paper-form-input">
   <iron-icon prefix icon="social:person-add" />
   {{paper-input label="Email adres" type="email" value=invitationEmail
-      insert-newline="invite"}}
+      insert-newline="invite" error-message=error invalid=invalid}}
   <paper-icon-button icon="send" {{action "invite"}} disabled={{inviteDisabled}} />
 </div>
-<small class="error">{{error}}</small>
 
 <h5>Uitgenodigde personen</h5>
 <div role="listbox">
-  {{#each group.invitations as |invitation|}}
+  {{#each invitations as |invitation|}}
     <paper-icon-item class="invitation {{if invitation.isNew "new"}}">
       <iron-icon icon="account-circle" class="avatar" item-icon />
       <paper-item-body class="flex" two-line>
         <div>{{invitation.email}}</div>
         <div secondary>
-        {{#if invitation.loading}}
+        {{#unless invitation.loading}}
           Uitnodiging aan het versturen...
         {{else if invitation.failed}}
           Oops, dat was een {{invitation.failure}}.
         {{else if invitation.succeed}}
           {{moment-from-now invitation.date}} uitgenodigd
-        {{/if}}
+        {{/unless}}
         </div>
       </paper-item-body>
-      {{#if invitation.loading}}
+      {{#unless invitation.loading}}
         <paper-spinner-lite active></paper-spinner-lite>
       {{else if invitation.failed}}
         <iron-icon icon="close" class="error" />
       {{else if invitation.succeed}}
         <iron-icon icon="check" class="success" />
-      {{/if}}
+      {{/unless}}
     </paper-icon-item>
   {{/each}}
 </div>
