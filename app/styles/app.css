@@ -93,23 +93,7 @@ small [secondary] {
   color: #737373;
 }
 
-/* Tasks */
-.task-component {
-  height: 30px;
-}
-
-paper-icon-button.delete-task {
-  color: rgba(0, 0, 0, 0.0);
-}
-
-.task-component:hover .delete-task {
-  color: grey;
-}
-
-.task-component:hover paper-icon-button.delete-task:hover {
-  color: black;
-}
-
+/* Paper toast */
 paper-toast paper-button {
   color: #FFB74D;
 }
@@ -128,7 +112,7 @@ paper-toast paper-button {
   height: 18px;
 }
 
-.invitation paper-item-body [secondary]{
+.invitation paper-item-body [secondary] {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
