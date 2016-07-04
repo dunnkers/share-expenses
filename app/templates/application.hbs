@@ -15,44 +15,52 @@
     </paper-toolbar>
 
     {{#if session.isAuthenticated}}
-    {{#links-selector tagName="paper-menu" selectable="paper-icon-item"}}
-      {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
-        <iron-icon icon="home" item-icon /> Home
-      {{/link-to}}
-      <div class="separator">Groepen</div>
-      {{#each session.record.groups as |group|}}
-        {{#link-to 'group' group tagName="paper-icon-item" ariaRole="menuitem"}}
-          <iron-icon icon="account-box" item-icon /> {{group.name}}
+      {{#links-selector tagName="paper-menu" selectable="paper-icon-item" selected=-1}}
+        {{#each session.record.groups as |group|}}
+          {{#link-to 'group' group tagName="paper-icon-item" ariaRole="menuitem"}}
+            <iron-icon icon="account-box" item-icon /> {{group.name}}
+          {{/link-to}}
+        {{/each}}
+
+        {{#link-to 'groups.add' tagName="paper-icon-item" ariaRole="menuitem"}}
+          <iron-icon icon="social:group-add" item-icon /> Groep toevoegen...
         {{/link-to}}
-      {{/each}}
-      {{#link-to 'groups.add' tagName="paper-icon-item" ariaRole="menuitem"}}
-        <iron-icon icon="social:group-add" item-icon /> Groep toevoegen...
-      {{/link-to}}
-    {{/links-selector}}
-    <div class="separator"></div>
-    <paper-icon-item {{action "signOut"}} ariaRole="menuitem">
-      <iron-icon icon="power-settings-new" item-icon /> Uitloggen
-    </paper-icon-item>
+
+        <div class="menu-separator"></div>
+
+        {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
+          <iron-icon icon="settings" item-icon /> Instellingen
+        {{/link-to}}
+        {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
+          <iron-icon icon="help" item-icon /> Help & Feedback
+        {{/link-to}}
+
+        <div class="menu-separator"></div>
+
+        <paper-icon-item {{action "signOut"}} ariaRole="menuitem">
+          <iron-icon icon="power-settings-new" item-icon /> Uitloggen
+        </paper-icon-item>
+      {{/links-selector}}
     {{/if}}
   </paper-header-panel>
 
-  <paper-scroll-header-panel main condeses keep-condensed-header>
+  <paper-header-panel main>
     {{#if session.isAuthenticated}}
       {{outlet}}
     {{else}}
-      <paper-toolbar class="tall">
-        <paper-icon-button icon="menu" paper-drawer-toggle />
-        <span class="indent title">Samen Betalen</span>
+      <paper-toolbar>
+        <paper-icon-button icon="menu" on-tap="menuAction" paper-drawer-toggle />
+        <span class="indent title">FF Betalen</span>
       </paper-toolbar>
       <div main class="splash-page layout vertical center">
         <h2>Welkom bij Samen Betalen!</h2>
         <iron-icon icon="social:mood" style="width:100px;height:100px;" />
         <p>Log in met Google om verder te gaan.</p>
         <paper-button class="google-sign-in" raised {{action "signIn" "google"}}>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+          <img src="assets/images/google-logo.svg" alt="Google logo" />
           Inloggen
         </paper-button>
       </div>
     {{/if}}
-  </paper-scroll-header-panel>
+  </paper-header-panel>
 </paper-drawer-panel>

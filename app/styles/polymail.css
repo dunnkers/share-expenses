@@ -1,17 +1,4 @@
 /* Polymer Mail */
-
-#drawerPanel paper-header-panel .separator {
-  padding: 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #aaa;
-  border-top: 1px solid #e0e0e0;
-}
-
-#drawerPanel paper-header-panel paper-menu {
-  margin: 16px 0 0 0;
-}
-
 #drawerPanel paper-scroll-header-panel::shadow #condensedHeaderBg {
   background-color: #e51c23;
   opacity: 1 !important; /* Prevents the background color from dissolving. */
@@ -64,11 +51,6 @@ img.avatar {
   height: 192px;
   top: 0;
 }
-
-/*#navheader .bottom :last-child {
-  font-size: small;
-  opacity: 0.8;
-}*/
 
 #fab {
   position: fixed;

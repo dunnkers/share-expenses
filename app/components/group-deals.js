@@ -11,5 +11,8 @@ export default Ember.Component.extend({
       deal.set('editing', true);
       this.get('group.deals').pushObject(deal);
     }
-  }
+  },
+
+  dealsSorting: ['createdAt:desc'],
+  deals: Ember.computed.sort('group.deals', 'dealsSorting')
 });

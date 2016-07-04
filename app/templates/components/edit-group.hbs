@@ -1,25 +1,24 @@
 <div class="paper-form-input">
   <iron-icon prefix icon="social:people" />
-  {{paper-input label="Naam" value=group.name}}
+  {{paper-input label="Groepsnaam" value=group.name required=true auto-validate=true}}
 </div>
 
-<div class="paper-form-input">
-  <iron-icon prefix icon="communication:comment" />
-  {{paper-input label="Beschrijving" value=group.description}}
+<div class="titled-separator">
+  Personen uitnodigen
 </div>
-
-<h4>Personen uitnodigen</h4>
 <div class="paper-form-input">
   <iron-icon prefix icon="social:person-add" />
   {{paper-input label="Email adres" type="email" value=invitationEmail
       insert-newline="invite" error-message=error invalid=invalid}}
-  <paper-icon-button icon="send" {{action "invite"}} disabled={{inviteDisabled}} />
 </div>
 
-<h5>Uitgenodigde personen</h5>
+{{#if invitations}}
+  <h5>Uitgenodigde personen</h5>
+{{/if}}
 <div role="listbox">
   {{#each invitations as |invitation|}}
-    <paper-icon-item class="invitation {{if invitation.isNew "new"}}">
+    <paper-icon-item class="invitation {{if invitation.isNew "new"}}
+    {{if invitation.isDeleted "deleted"}}">
       <iron-icon icon="account-circle" class="avatar" item-icon />
       <paper-item-body class="flex" two-line>
         <div>{{invitation.email}}</div>
@@ -42,8 +41,4 @@
       {{/unless}}
     </paper-icon-item>
   {{/each}}
-</div>
-
-<div class="layout horizontal wrap end-justified">
-  <paper-button raised {{action "save"}}>Opslaan</paper-button>
 </div>

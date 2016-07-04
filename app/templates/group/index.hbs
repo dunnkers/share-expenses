@@ -1,1 +1,13 @@
-{{group-deals group=model}}
+<paper-toolbar class="medium-tall">
+  <paper-icon-button icon="menu" on-tap="menuAction" paper-drawer-toggle />
+  <span class="indent title">{{model.name}}</span>
+  {{#link-to 'group.edit' tagName="paper-icon-button" icon="settings"}}{{/link-to}}
+  {{#links-selector tagName="paper-tabs" selectable="paper-tab" class="bottom fit"}}
+    {{#link-to 'group.index' tagName="paper-tab" ariaRole="tab"}}DEALS{{/link-to}}
+    {{#link-to 'group.edit' tagName="paper-tab" ariaRole="tab"}}STATS{{/link-to}}
+  {{/links-selector}}
+</paper-toolbar>
+
+<div class="outlet">
+  {{group-deals group=model}}
+</div>

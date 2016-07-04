@@ -4,10 +4,6 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   actions: {
-    save() {
-      this.get('group').save();
-    },
-
     invite() {
       if (this.get('inviteDisabled')) {
         return;
@@ -32,6 +28,7 @@ export default Ember.Component.extend({
         email: email,
         group: this.get('group')
       });
+      invitation.save().then(() => this.get('group').save());
 
       let data = invitation.toJSON();
       data.group = {
@@ -39,12 +36,12 @@ export default Ember.Component.extend({
         name: this.get('group.name')
       };
 
+      // first save all, then delete if failed.
+
       Ember.$.post('http://localhost:3000/invite', data).done(() => {
         invitation.set('succeed', true);
         invitation.save();
-        this.get('group').save();
       }).fail((err) => {
-        invitation.set('failed', true);
         switch (err.responseText) {
           case 'No email':
             invitation.set('failure', 'leeg email adres');
@@ -61,6 +58,8 @@ export default Ember.Component.extend({
           default:
             invitation.set('failure', 'onbekende fout');
         }
+        invitation.deleteRecord();
+        this.get('deletedInvs').addObject(invitation);
       });
     }
   },
@@ -68,6 +67,8 @@ export default Ember.Component.extend({
   inviteDisabled: Ember.computed.empty('invitationEmail'),
   invalid: Ember.computed.bool('error'),
 
+  deletedInvs: [],
+  allInvitations: Ember.computed.uniq('deletedInvs', 'group.invitations'),
   invitationSorting: ['date:desc'],
-  invitations: Ember.computed.sort('group.invitations', 'invitationSorting'),
+  invitations: Ember.computed.sort('allInvitations', 'invitationSorting'),
 });

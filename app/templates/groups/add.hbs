@@ -1,15 +1,9 @@
-<h4>Nieuwe groep aanmaken</h4>
+<paper-toolbar>
+  <paper-icon-button icon="arrow-back" {{action "back"}} />
+  <span class="indent title">Nieuwe groep</span>
+  <paper-icon-button icon="check" {{action "saveGroup"}} />
+</paper-toolbar>
 
-<div class="paper-form-input">
-  <iron-icon prefix icon="social:people" />
-  {{paper-input label="Naam" value=model.name}}
-</div>
-
-<div class="paper-form-input">
-  <iron-icon prefix icon="communication:comment" />
-  {{paper-input label="Beschrijving" value=model.description}}
-</div>
-
-<div class="layout horizontal wrap end-justified">
-  <paper-icon-button class="giant" icon="check" {{action "save"}} />
+<div class="outlet">
+  {{edit-group group=model}}
 </div>
