@@ -12,8 +12,8 @@ export default Ember.Route.extend(ConfirmationMixin, {
     },
 
     saveGroup() {
-      let group = this.get('controller.model'),
-          user = this.get('session.record');
+      let group = this.get('controller.model');
+      let user = this.get('session.record');
 
       // update group with user and vice-versa.
       group.get('users').addObject(user);

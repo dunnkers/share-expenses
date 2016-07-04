@@ -10,6 +10,8 @@ export default DS.Model.extend({
   participants: DS.hasMany('user', { inverse: 'participating' }),
   group: DS.belongsTo('group'),
   createdAt: DS.attr('date', {
-    defaultValue() { return new Date(); }
+    defaultValue() {
+      return new Date();
+    }
   })
 });

@@ -21,6 +21,8 @@ export default DS.Model.extend({
   }),
 
   date: DS.attr('date', {
-    defaultValue() { return new Date(); }
+    defaultValue() {
+      return new Date();
+    }
   })
 });

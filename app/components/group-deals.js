@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   actions: {
-    addDeal: function() {
+    addDeal() {
       let deal = this.get('store').createRecord('deal', {
         group: this.get('group')
       });

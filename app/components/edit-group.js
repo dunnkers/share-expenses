@@ -25,7 +25,7 @@ export default Ember.Component.extend({
       // TODO check all pending users for this group, to see whether we can
       // even invite this user.
       let invitation = this.get('store').createRecord('invitation', {
-        email: email,
+        email,
         group: this.get('group')
       });
       invitation.save().then(() => this.get('group').save());
@@ -70,5 +70,5 @@ export default Ember.Component.extend({
   deletedInvs: [],
   allInvitations: Ember.computed.uniq('deletedInvs', 'group.invitations'),
   invitationSorting: ['date:desc'],
-  invitations: Ember.computed.sort('allInvitations', 'invitationSorting'),
+  invitations: Ember.computed.sort('allInvitations', 'invitationSorting')
 });

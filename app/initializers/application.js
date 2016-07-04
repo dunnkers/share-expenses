@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default {
   name: 'webcomponents-polyfill-support',
-  initialize: function() {
+  initialize() {
     Ember.Component.reopen({
       classNameBindings: ['shadowDOM:x-scope', 'elementName'],
 
@@ -15,7 +15,8 @@ export default {
 
       elementName: Ember.computed(function() {
         if (this.get('shadowDOM')) {
-          return this.get('tagName') + '-0';
+          let tagName = this.get('tagName');
+          return `${tagName} -0`;
         }
       })
     });

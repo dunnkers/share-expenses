@@ -14,7 +14,7 @@ export default Ember.Component.extend({
       // query `selectable` elements, or else direct children
       let prfx = this.get('selectable') || '>';
       // select link elements with jquery, and map this to the Ember View object
-      let childLinkViews = this.$(prfx + '.ember-view').toArray().map(view =>
+      let childLinkViews = this.$(`${prfx}.ember-view`).toArray().map((view) =>
         this._viewRegistry[view.id]
       );
 
@@ -28,5 +28,5 @@ export default Ember.Component.extend({
     // find the active link of the child views and return its index.
     let views = this.get('childLinkViews');
     return views.indexOf(views.findBy('active'));
-  }),
+  })
 });
