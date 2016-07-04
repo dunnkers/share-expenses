@@ -1,5 +1,5 @@
 <div class="paper-form-input">
-  <iron-icon prefix icon="social:people" />
+  <iron-icon prefix icon="social:people"></iron-icon>
   {{paper-input label="Groepsnaam" value=group.name required=true auto-validate=true}}
 </div>
 
@@ -7,7 +7,7 @@
   Personen uitnodigen
 </div>
 <div class="paper-form-input">
-  <iron-icon prefix icon="social:person-add" />
+  <iron-icon prefix icon="social:person-add"></iron-icon>
   {{paper-input label="Email adres" type="email" value=invitationEmail
       insert-newline="invite" error-message=error invalid=invalid}}
 </div>
@@ -19,25 +19,25 @@
   {{#each invitations as |invitation|}}
     <paper-icon-item class="invitation {{if invitation.isNew "new"}}
     {{if invitation.isDeleted "deleted"}}">
-      <iron-icon icon="account-circle" class="avatar" item-icon />
+      <iron-icon icon="account-circle" class="avatar" item-icon></iron-icon>
       <paper-item-body class="flex" two-line>
         <div>{{invitation.email}}</div>
         <div secondary>
-        {{#unless invitation.loading}}
-          Uitnodiging aan het versturen...
-        {{else if invitation.failed}}
-          Oops, dat was een {{invitation.failure}}.
-        {{else if invitation.succeed}}
-          {{moment-from-now invitation.date}} uitgenodigd
-        {{/unless}}
+          {{#unless invitation.loading}}
+            Uitnodiging aan het versturen...
+          {{else if invitation.failed}}
+            Oops, dat was een {{invitation.failure}}.
+          {{else if invitation.succeed}}
+            {{moment-from-now invitation.date}} uitgenodigd
+          {{/unless}}
         </div>
       </paper-item-body>
       {{#unless invitation.loading}}
         <paper-spinner-lite active></paper-spinner-lite>
       {{else if invitation.failed}}
-        <iron-icon icon="close" class="error" />
+        <iron-icon icon="close" class="error"></iron-icon>
       {{else if invitation.succeed}}
-        <iron-icon icon="check" class="success" />
+        <iron-icon icon="check" class="success"></iron-icon>
       {{/unless}}
     </paper-icon-item>
   {{/each}}

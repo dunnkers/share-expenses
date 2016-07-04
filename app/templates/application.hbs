@@ -3,7 +3,7 @@
     <paper-toolbar id="navheader" class="tall">
       <iron-image id="coverimage" src="/assets/images/beach.jpg"
             placeholder="/assets/images/beach.jpg"
-            sizing="cover" preload fade class="fit" />
+            sizing="cover" preload fade class="fit"></iron-image>
 
       {{#if session.isAuthenticated}}
         <img class="middle profile" src={{session.currentUser.photoURL}}>
@@ -18,27 +18,27 @@
       {{#links-selector tagName="paper-menu" selectable="paper-icon-item" selected=-1}}
         {{#each session.record.groups as |group|}}
           {{#link-to 'group' group tagName="paper-icon-item" ariaRole="menuitem"}}
-            <iron-icon icon="account-box" item-icon /> {{group.name}}
+            <iron-icon icon="account-box" item-icon></iron-icon> {{group.name}}
           {{/link-to}}
         {{/each}}
 
         {{#link-to 'groups.add' tagName="paper-icon-item" ariaRole="menuitem"}}
-          <iron-icon icon="social:group-add" item-icon /> Groep toevoegen...
+          <iron-icon icon="social:group-add" item-icon></iron-icon> Groep toevoegen...
         {{/link-to}}
 
         <div class="menu-separator"></div>
 
         {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
-          <iron-icon icon="settings" item-icon /> Instellingen
+          <iron-icon icon="settings" item-icon></iron-icon> Instellingen
         {{/link-to}}
         {{#link-to 'index' tagName="paper-icon-item" ariaRole="menuitem"}}
-          <iron-icon icon="help" item-icon /> Help & Feedback
+          <iron-icon icon="help" item-icon></iron-icon> Help & Feedback
         {{/link-to}}
 
         <div class="menu-separator"></div>
 
         <paper-icon-item {{action "signOut"}} ariaRole="menuitem">
-          <iron-icon icon="power-settings-new" item-icon /> Uitloggen
+          <iron-icon icon="power-settings-new" item-icon></iron-icon> Uitloggen
         </paper-icon-item>
       {{/links-selector}}
     {{/if}}
@@ -49,15 +49,17 @@
       {{outlet}}
     {{else}}
       <paper-toolbar>
-        <paper-icon-button icon="menu" on-tap="menuAction" paper-drawer-toggle />
+        <paper-icon-button icon="menu" on-tap="menuAction" paper-drawer-toggle>
+        </paper-icon-button>
         <span class="indent title">FF Betalen</span>
       </paper-toolbar>
       <div main class="splash-page layout vertical center">
         <h2>Welkom bij Samen Betalen!</h2>
-        <iron-icon icon="social:mood" style="width:100px;height:100px;" />
+        <iron-icon icon="social:mood">
+        </iron-icon>
         <p>Log in met Google om verder te gaan.</p>
         <paper-button class="google-sign-in" raised {{action "signIn" "google"}}>
-          <img src="assets/images/google-logo.svg" alt="Google logo" />
+          <img src="assets/images/google-logo.svg" alt="Google logo">
           Inloggen
         </paper-button>
       </div>

@@ -1,12 +1,12 @@
 <div main class="splash-page layout vertical center">
-{{#if succeed}}
-  <h1>Je zit nu in {{group}}!</h1>
-  <h1>😀</h1>
-{{else if failure}}
-  <h1>Guur. Dat was {{failure}}.</h1>
-  <h1>😬</h1>
-{{else}}
-  <h1>Bezig met deelnemen aan {{group}}!</h1>
-  <paper-spinner active></paper-spinner>
-{{/if}}
+  {{#if succeed}}
+    <h1>Je zit nu in {{group}}!</h1>
+    <h1>😀</h1>
+  {{else if failure}}
+    <h1>Guur. Dat was {{failure}}.</h1>
+    <h1>😬</h1>
+  {{else}}
+    <h1>Bezig met deelnemen aan {{group}}!</h1>
+    <paper-spinner active></paper-spinner>
+  {{/if}}
 </div>

@@ -1,8 +1,10 @@
 <paper-card class="deal {{if deal.isNew "new"}} {{if isUpdated "updated"}}">
   <div class="card-content">
     {{#if deal.editing}}
-      <paper-icon-button class="edit" icon="check-circle" {{action "save"}} />
-      <paper-icon-button class="edit" icon="block" {{action "cancel"}} />
+      <paper-icon-button class="edit" icon="check-circle" {{action "save"}}>
+      </paper-icon-button>
+      <paper-icon-button class="edit" icon="block" {{action "cancel"}}>
+      </paper-icon-button>
 
       <div class="paper-form-input">
         <iron-icon prefix icon="assignment"></iron-icon>
@@ -19,13 +21,16 @@
         {{paper-input label="Kosten" value=deal.cost type="number"}}
       </div>
     {{else}}
-      <paper-icon-button class="edit" icon="create" {{action "edit"}} />
-      <paper-icon-button class="edit" icon="delete" {{action "delete"}} />
+      <paper-icon-button class="edit" icon="create" {{action "edit"}}>
+      </paper-icon-button>
+      <paper-icon-button class="edit" icon="delete" {{action "delete"}}>
+      </paper-icon-button>
       <h3>{{deal.description}}</h3>
       <small secondary>{{deal.amount}}x</small>
       <h4>€{{deal.cost}},-</h4>
     {{/if}}
-    <iron-icon icon="event" /> {{moment-from-now deal.createdAt}} aangemaakt
+    <iron-icon icon="event"></iron-icon>
+    {{moment-from-now deal.createdAt}} aangemaakt
   </div>
   <div class="card-actions">
     <small>participant avatars here ...</small>
