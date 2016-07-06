@@ -1,9 +1,11 @@
 <div main class="splash-page layout vertical center">
+  <h3>Deelnemen aan {{group}}</h3>
   {{#if succeed}}
     <h1>Je zit nu in {{group}}!</h1>
     <h1>😀</h1>
   {{else if failure}}
-    <h1>Guur. Dat was {{failure}}.</h1>
+    <h2>Guur. {{failure}}</h2>
+    <span>Vraag of je opnieuw uitgenodigd kan worden.</span>
     <h1>😬</h1>
   {{else}}
     <h1>Bezig met deelnemen aan {{group}}!</h1>

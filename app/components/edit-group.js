@@ -42,22 +42,7 @@ export default Ember.Component.extend({
         invitation.set('succeed', true);
         invitation.save();
       }).fail((err) => {
-        switch (err.responseText) {
-          case 'No email':
-            invitation.set('failure', 'leeg email adres');
-            break;
-          case 'No group':
-            invitation.set('failure', 'ongeldige groep');
-            break;
-          case 'Email failure':
-            invitation.set('failure', 'foutje tijdens het mailen');
-            break;
-          case 'Invalid email':
-            invitation.set('failure', 'ongeldig email adres');
-            break;
-          default:
-            invitation.set('failure', 'onbekende fout');
-        }
+        invitation.set('failure', this.getFailureText(err.responseText));
         invitation.deleteRecord();
         this.get('deletedInvs').addObject(invitation);
       });
@@ -70,5 +55,20 @@ export default Ember.Component.extend({
   deletedInvs: [],
   allInvitations: Ember.computed.uniq('deletedInvs', 'group.invitations'),
   invitationSorting: ['date:desc'],
-  invitations: Ember.computed.sort('allInvitations', 'invitationSorting')
+  invitations: Ember.computed.sort('allInvitations', 'invitationSorting'),
+
+  getFailureText(responseText) {
+    switch (responseText) {
+      case 'No email':
+        return 'leeg email adres';
+      case 'No group':
+        return 'ongeldige groep';
+      case 'Email failure':
+        return 'foutje tijdens het mailen';
+      case 'Invalid email':
+        return 'ongeldig email adres';
+      default:
+        return 'onbekende fout';
+    }
+  }
 });
