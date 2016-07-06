@@ -42,3 +42,11 @@
     </paper-icon-item>
   {{/each}}
 </div>
+
+{{#unless group.isNew}}
+  <p>
+    <paper-button raised urgent {{action "leaveGroup"}}>
+      Groep verlaten
+    </paper-button>
+  </p>
+{{/unless}}

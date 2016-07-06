@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  session: Ember.inject.service(),
+  router: Ember.inject.service('-routing'),
 
   actions: {
     invite() {
@@ -11,11 +13,11 @@ export default Ember.Component.extend({
 
       // Validation
       let email = this.get('invitationEmail');
-      if (this.get('group').get('users').getEach('email').contains(email)) {
+      if (this.get('group.users').getEach('email').contains(email)) {
         this.set('error', 'Er zit al iemand in deze groep met deze email!');
         return;
       }
-      if (this.get('group').get('invitations').getEach('email').contains(email)) {
+      if (this.get('group.invitations').getEach('email').contains(email)) {
         this.set('error', 'Je hebt deze persoon al uitgenodigd dude!');
         return;
       }
@@ -46,6 +48,17 @@ export default Ember.Component.extend({
         invitation.deleteRecord();
         this.get('deletedInvs').addObject(invitation);
       });
+    },
+
+    leaveGroup() {
+      let user = this.get('session.record');
+      let group = this.get('group');
+      group.get('users').removeObject(user);
+      user.get('groups').removeObject(group);
+      user.save().then(() => group.save());
+
+      // FIXME remove this hack and go proper by just using a Route
+      this.get('router').transitionTo('index');
     }
   },
 
