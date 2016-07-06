@@ -7,8 +7,7 @@ export default DS.Model.extend({
   avatar: DS.attr('string'),
 
   groups: DS.hasMany('group'),
-  advances: DS.hasMany('deal'), /* advance payments this user made for others */
-  participating: DS.hasMany('deal'),
+  deals: DS.hasMany('deal'),
 
   title: Ember.computed('name', 'email', function() {
     return this.get('name') ? this.get('name') : this.get('email');
