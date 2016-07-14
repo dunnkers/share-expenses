@@ -122,3 +122,8 @@ paper-toast paper-button {
   line-height: 20px;
   color: #737373;
 }
+
+/* Opened paper chip index fix */
+paper-chip[opened] {
+  z-index: 9999;
+}

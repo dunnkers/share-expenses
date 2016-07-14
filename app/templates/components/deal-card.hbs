@@ -33,6 +33,14 @@
     {{moment-from-now deal.createdAt}} aangemaakt
   </div>
   <div class="card-actions">
-    <small>participant avatars here ...</small>
+    <p>
+      {{#each deal.participants as |user|}}
+        <paper-chip label={{user.title}} removable>
+          <iron-icon class="icon" src={{user.avatar}}></iron-icon>
+          <h1>{{user.name}}</h1>
+          <h2>{{user.email}}</h2>
+        </paper-chip>
+      {{/each}}
+    </p>
   </div>
 </paper-card>

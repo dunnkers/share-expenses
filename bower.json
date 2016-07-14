@@ -9,6 +9,7 @@
     "firebase": "^3.0.0",
     "paper-elements": "PolymerElements/paper-elements#^1.0.7",
     "iron-elements": "^1.0.10",
-    "web-animations-js": "^2.2.1"
+    "web-animations-js": "^2.2.1",
+    "paper-chip": "web-paper-chip#^1.0.8"
   }
 }
