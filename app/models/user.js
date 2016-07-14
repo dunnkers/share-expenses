@@ -8,6 +8,7 @@ export default DS.Model.extend({
 
   groups: DS.hasMany('group'),
   deals: DS.hasMany('deal'),
+  payments: DS.hasMany('payment'),
 
   title: Ember.computed('name', 'email', function() {
     return this.get('name') ? this.get('name') : this.get('email');

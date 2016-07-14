@@ -10,27 +10,40 @@
         <iron-icon prefix icon="assignment"></iron-icon>
         {{paper-input label="Beschrijving" value=deal.description}}
       </div>
-
-      <div class="paper-form-input">
-        <h2 prefix>#</h2>
-        {{paper-input label="Aantal" value=deal.amount type="number"}}
-      </div>
-
-      <div class="paper-form-input">
-        <iron-icon prefix icon="editor:attach-money"></iron-icon>
-        {{paper-input label="Kosten" value=deal.cost type="number"}}
-      </div>
     {{else}}
-      <paper-icon-button class="edit" icon="create" {{action "edit"}}>
-      </paper-icon-button>
-      <paper-icon-button class="edit" icon="delete" {{action "delete"}}>
-      </paper-icon-button>
-      <h3>{{deal.description}}</h3>
-      <small secondary>{{deal.amount}}x</small>
-      <h4>€{{deal.cost}},-</h4>
+      <div class="layout horizontal">
+        <h3 class="flex">{{deal.description}}</h3>
+        <paper-icon-button icon="create" {{action "edit"}}>
+        </paper-icon-button>
+        <paper-icon-button icon="delete" {{action "delete"}}>
+        </paper-icon-button>
+      </div>
+      <h1>(totale kosten)</h1>
+
+      {{#each deal.payments as |payment index|}}
+        <div class="layout horizontal end">
+          {{#paper-input label="Kosten" value=payment.cost type="number"}}
+          <span prefix>€&nbsp;</span>
+          {{/paper-input}}
+          &nbsp;
+          <paper-dropdown-menu label="Betaald door">
+            {{#paper-listbox deal.group.users selected=(mut paidBy) as |user|}}
+              <paper-item>{{user.title}}</paper-item>
+            {{/paper-listbox}}
+          </paper-dropdown-menu>
+          <paper-icon-button icon="add-circle" {{action "addPayment"}}>
+          </paper-icon-button>
+          {{#unless (is-first index)}}
+            <paper-icon-button icon="clear" {{action "deletePayment" payment}}>
+            </paper-icon-button>
+          {{/unless}}
+        </div>
+      {{/each}}
     {{/if}}
-    <iron-icon icon="event"></iron-icon>
-    {{moment-from-now deal.createdAt}} aangemaakt
+    <p>
+      <iron-icon icon="event"></iron-icon>
+      {{moment-from-now deal.createdAt}} aangemaakt
+    </p>
   </div>
   <div class="card-actions">
     <p>

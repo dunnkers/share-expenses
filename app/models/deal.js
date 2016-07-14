@@ -5,6 +5,7 @@ export default DS.Model.extend({
 
   participants: DS.hasMany('user'),
   group: DS.belongsTo('group'),
+  payments: DS.hasMany('payment'),
 
   createdAt: DS.attr('date', {
     defaultValue() {
