@@ -16,6 +16,8 @@ Router.map(function() {
   });
 
   this.route('invite');
+  this.route('settings');
+  this.route('about');
 });
 
 export default Router;
